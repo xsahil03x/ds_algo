@@ -7,7 +7,7 @@ class BinarySearch<T extends Comparable<T>>
     var start = 0;
     var end = arr.length - 1;
     while (start <= end) {
-      final mid = (start + end) ~/ 2;
+      final mid = start + (end - start) ~/ 2;
       if (element.compareTo(arr[mid]) == 0) return mid;
       if (element.compareTo(arr[mid]) == -1) {
         end = mid - 1;
