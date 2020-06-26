@@ -1,5 +1,5 @@
 enum Approach {
-  Naive,
-  Better,
-  Best,
+  NAIVE,
+  BETTER,
+  BEST,
 }

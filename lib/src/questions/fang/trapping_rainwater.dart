@@ -1,5 +1,7 @@
 import 'dart:math';
 
+import 'package:ds_algo/src/constants.dart';
+
 import '../answer_approach.dart';
 
 /// Question -:
@@ -25,7 +27,7 @@ void main() {
   final stopwatch = Stopwatch()..start();
   final totalTrappedWater = calculateTrappedRainwater(
     elevationList: elevationList,
-    approach: Approach.Naive,
+    approach: Approach.BETTER,
   );
   stopwatch.stop();
   print('Total trapped water : $totalTrappedWater');
@@ -43,7 +45,7 @@ int calculateTrappedRainwater({
 
     /// Time Complexity -> O(n^2)
     /// Space Complexity -> O(1)
-    case Approach.Naive:
+    case Approach.NAIVE:
       for (var i = 1; i < length - 1; i++) {
         var curr = elevationList[i];
 
@@ -63,18 +65,18 @@ int calculateTrappedRainwater({
 
     /// Time Complexity -> O(n)
     /// Space Complexity -> O(n)
-    case Approach.Better:
+    case Approach.BETTER:
       var prevMax = <int, int>{};
       var nextMax = <int, int>{};
 
-      var max = -100;
+      var max = INT_MIN;
       for (var i = 0; i < length; i++) {
         var curr = elevationList[i];
         if (curr > max) max = curr;
         nextMax[i] = max;
       }
 
-      max = -100;
+      max = INT_MIN;
       for (var j = length - 1; j >= 0; j--) {
         var curr = elevationList[j];
         if (curr > max) max = curr;
@@ -88,7 +90,7 @@ int calculateTrappedRainwater({
 
     /// Time Complexity -> O(n)
     /// Space Complexity -> O(1)
-    case Approach.Best:
+    case Approach.BEST:
       var left_max = 0;
       var right_max = 0;
 
